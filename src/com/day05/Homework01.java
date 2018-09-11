@@ -14,6 +14,8 @@ public class Homework01 {
 		System.out.println(Arrays.toString(a));
 		System.out.println(Arrays.toString(a1));
 		System.out.println(Arrays.toString(a2));
-		
+		int a11 = 3;
+		int t = (--a11)<<a11;
+		System.out.println(t);
 	}
 }

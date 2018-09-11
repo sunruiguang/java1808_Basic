@@ -5,23 +5,18 @@ import java.util.Arrays;
 public class Homework13 {
 	public static void main(String[] args) {
 		int[] arr = { 1, 2, 1, 3, 5, 2 };
-		int[] index = new int[1000];
+		int[] arr1 = new int[arr.length];
+		Arrays.sort(arr);
+		boolean[] flag = new boolean[arr[arr.length-1]+1];
 		int count = 0;
 		for (int i = 0; i < arr.length; i++) {
-			if (index[arr[i]] == 1){
-				arr[i] = -1;
+			if (!flag[arr[i]]){
+				arr1[count] = arr[i];
 				count++;
+				flag[arr[i]] = true;
 			}
-			else
-				index[arr[i]] = 1;
 		}
-		int[] arr1 = new int[arr.length - count];
-		int j = 0;
-		for(int i:arr){
-			if(i==-1) continue;
-			arr1[j++] = i;
-		}
-		arr = arr1;
+		arr = Arrays.copyOf(arr1, count);
 		System.out.println(Arrays.toString(arr));
 	}
 }
