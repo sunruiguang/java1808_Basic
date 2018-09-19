@@ -10,18 +10,26 @@ public class Cell {
 	}
 
 	public void down(int num) {
-		y += 3;
+		x += num;
 	}
 
 	public void down() {
-		y++;
+		x++;
 	}
 
 	public void left() {
-		x--;
+		y--;
+	}
+
+	public void left(int num) {
+		y -= num;
 	}
 
 	public void right() {
-		x++;
+		y++;
+	}
+
+	public void right(int num) {
+		y += num;
 	}
 }
