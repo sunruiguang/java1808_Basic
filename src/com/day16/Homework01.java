@@ -2,6 +2,7 @@ package com.day16;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Homework01 {
@@ -19,13 +20,24 @@ public class Homework01 {
         ) {
             System.out.println(student);
         }
+        MyComparator myComparator = new MyComparator();
+        Collections.sort(list,myComparator);
+
+        Comparator<Student> comparator = new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o1.age - o2.age;
+            }
+        };
+
+        Collections.sort(list,comparator);
     }
 }
 
 class Student implements Comparable<Student> {
-    private String name;
-    private int age;
-    private int id;
+    String name;
+    int age;
+    int id;
 
     public Student(String name, int age, int id) {
         this.name = name;
@@ -53,3 +65,11 @@ class Student implements Comparable<Student> {
         return this.name.compareTo(o.name);
     }
 }
+
+class MyComparator implements Comparator<Student>{
+    @Override
+    public int compare(Student o1, Student o2) {
+        return o1.age - o2.age;
+    }
+}
+
