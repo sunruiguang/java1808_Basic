@@ -12,18 +12,17 @@ public class homework01 {
 
     @Test
     public void method() {
-        FileInputStream fis = null;
         try {
-            fis = new FileInputStream("1.txt");
-            InputStreamReader osr = new InputStreamReader(fis, "utf-8");
-            BufferedReader br = new BufferedReader(osr);
+            FileInputStream fis =  new FileInputStream("1.txt");
+            InputStreamReader isr = new InputStreamReader(fis, "utf-8");
+            BufferedReader br = new BufferedReader(isr);
             String str = null;
             while ((str = br.readLine()) != null) {
                 check(str);
             }
             print();
             br.close();
-            osr.close();
+            isr.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
@@ -46,8 +45,23 @@ public class homework01 {
 
     public void print() {
         Set<Map.Entry<Character, Integer>> set = map.entrySet();
-        for (Map.Entry<Character, Integer> entry : set) {
-            System.out.println(entry);
+        try {
+            FileOutputStream fos = new FileOutputStream("num.txt");
+            OutputStreamWriter osw = new OutputStreamWriter(fos, "utf-8");
+            PrintWriter pw = new PrintWriter(osw, true);
+            for (Map.Entry<Character, Integer> entry : set) {
+                pw.println(entry);
+            }
+            pw.close();
+            osw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+
     }
 }
